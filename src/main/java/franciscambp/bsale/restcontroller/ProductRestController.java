@@ -21,7 +21,7 @@ public class ProductRestController {
     public ResponseEntity<Page<Product>> getProductosPorCategoria (@PathVariable(value = "idCategoria") Integer idCategoria,
                                                                    @PathVariable(value = "nroPagina") int nroPagina) {
 
-        Page productos = productService.getProductosPorCategoria(idCategoria, PageRequest.of(nroPagina, 5));
+        Page productos = productService.getProductosPorCategoria(idCategoria, PageRequest.of(nroPagina, 6));
 
         if (!productos.isEmpty()) return new ResponseEntity<>(productos, HttpStatus.OK);
         else
@@ -32,7 +32,7 @@ public class ProductRestController {
     @GetMapping("/buscar/page/{nroPagina}")
     public ResponseEntity<Page<Product>> searchProductos (@PathVariable(value = "nroPagina") int nroPagina,
                                                           @RequestParam String name) {
-        Page productos = productService.searchProductos(name, PageRequest.of(nroPagina, 5));
+        Page productos = productService.searchProductos(name, PageRequest.of(nroPagina, 6));
 
         if (!productos.isEmpty() && productos != null) return new ResponseEntity<>(productos, HttpStatus.OK);
         else
